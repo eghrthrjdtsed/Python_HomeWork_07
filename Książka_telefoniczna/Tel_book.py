@@ -1,3 +1,5 @@
+import time
+
 print()
 print("ТЕЛЕФОННЫЙ СПРАВОЧНИК_v1")
 
@@ -37,11 +39,11 @@ def main_menu():
     else: 
         print( "Пожалуйста, повторите ввод\n") 
         enter = input("Для продолжения нажмите Enter")
-        main_menu() 
+        main_menu()
  
 # метод поиска         
 def searchcontact(): 
-    searchname = input( "Введите ИМЯ для поиска контакта: ") 
+    searchname = input("Введите ИМЯ для поиска контакта: ") 
     remname = searchname[1:] 
     firstchar = searchname[0] 
     searchname = firstchar.upper() + remname 
@@ -51,23 +53,23 @@ def searchcontact():
     found = False 
     for line in filecontents: 
         if searchname in line: 
-            print( "Your Required Contact Record is:", end = " ") 
+            print("По вашему запросу найден контакт: ", end = " ") 
             print( line) 
             found = True 
             break 
     if found == False: 
-        print( "The Searched Contact is not available in the Phone Book", searchname) 
+        print(f"Контакт {searchname} не найден в справочнике, сожалею") 
  
 # имя 
 def input_firstname(): 
-    first = input( "Введите ваше имя: ") 
+    first = input("Введите ваше имя: ") 
     remfname = first[1:] 
     firstchar = first[0] 
     return firstchar.upper() + remfname 
  
 # фамилия 
 def input_lastname(): 
-    last = input( "Введите вашу фамилию: ") 
+    last = input("Введите вашу фамилию: ") 
     remlname = last[1:] 
     firstchar = last[0] 
     return firstchar.upper() + remlname 
@@ -76,11 +78,12 @@ def input_lastname():
 def newcontact(): 
     firstname = input_firstname() 
     lastname = input_lastname() 
-    phoneNum = input( "Введите ваш номер телефона: ") 
-    emailID = input( "Введите ваш E-mail: ") 
+    phoneNum = input("Введите ваш номер телефона: ") 
+    emailID = input("Введите ваш E-mail: ") 
     contactDetails =("" + firstname + " " + lastname + ";" + phoneNum + ";" + emailID +  "\n") 
     myfile = open(filename, "a") 
     myfile.write(contactDetails) 
-    print( "The following Contact Details:\n " + contactDetails + "\nhas been stored successfully!") 
+    print("Новая запись в телефонном справочнике: \n " + contactDetails + " успешно создана!")  
  
 main_menu()
+time.sleep(5)
