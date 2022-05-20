@@ -1,5 +1,7 @@
 import time
-import Książka_telefoniczna.kg as ttt
+import string
+import secrets
+
 print()
 print("ТЕЛЕФОННЫЙ СПРАВОЧНИК_v1")
 
@@ -72,7 +74,14 @@ def input_lastname():
     last = input("Введите вашу фамилию: ") 
     remlname = last[1:] 
     firstchar = last[0] 
-    return firstchar.upper() + remlname 
+    return firstchar.upper() + remlname
+
+# метод генерации ключа
+def key_gen():
+    alphabet = string.ascii_letters + string.digits
+    key = ''.join(secrets.choice(alphabet) for i in range(4))
+    return key
+key = key_gen()
  
 # сохранение новых данных контакта 
 def newcontact(): 
@@ -80,7 +89,7 @@ def newcontact():
     lastname = input_lastname() 
     phoneNum = input("Введите ваш номер телефона: ") 
     emailID = input("Введите ваш E-mail: ") 
-    contactDetails =(f"{ttt}" + firstname + " " + lastname + ";" + phoneNum + ";" + emailID +  "\n") 
+    contactDetails =(f"{key};" + firstname + " " + lastname + ";" + phoneNum + ";" + emailID +  "\n") 
     myfile = open(filename, "a") 
     myfile.write(contactDetails) 
     print("Новая запись в телефонном справочнике: \n " + contactDetails + " успешно создана!")  
