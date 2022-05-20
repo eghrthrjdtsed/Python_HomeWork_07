@@ -1,46 +1,47 @@
-print("ТЕЛЕФОННЫЙ СПРАВОЧНИК")
+print()
+print("ТЕЛЕФОННЫЙ СПРАВОЧНИК_v1")
 
-# creating a .txt file to store contact details 
-filename = "Tel_book.txt" 
+# создание файла 
+filename = "Tel_book.csv" 
 myfile = open(filename, "a+") 
 myfile.close
  
-# defining main menu 
+# метод главного меню 
 def main_menu(): 
-    print( "\nMAIN MENU\n") 
-    print( "1. Show all existing Contacts") 
-    print( "2. Add a new Contact") 
-    print( "3. Search the existing Contact") 
-    print( "4. Exit") 
-    choice = input("Enter your choice: ") 
+    print( "\nГЛАВНОЕ МЕНЮ\n") 
+    print( "1. Просмотреть все существующие контакты") 
+    print( "2. Добавить новый контакт") 
+    print( "3. Найти существующий контакт") 
+    print( "4. Выход") 
+    choice = input("Выберите пункт меню: ") 
     if choice == "1": 
         myfile = open(filename, "r+") 
         filecontents = myfile.read() 
         if len(filecontents) == 0: 
-            print( "There is no contact in the phonebook.") 
+            print( "Искомый контакт не обнаружен, сожалею") 
         else: 
             print(filecontents) 
         myfile.close 
-        enter = input("Press Enter to continue ...") 
+        enter = input("Для продолжения нажмите Enter") 
         main_menu() 
     elif choice == "2": 
         newcontact() 
-        enter = input("Press Enter to continue ...") 
+        enter = input("Для продолжения нажмите Enter") 
         main_menu() 
     elif choice == "3": 
         searchcontact() 
-        enter = input("Press Enter to continue ...") 
+        enter = input("Для продолжения нажмите Enter") 
         main_menu() 
     elif choice == "4": 
-        print("Thank you for using Phonebook!") 
+        print("Спасибо, что используете телефонный справочник!") 
     else: 
-        print( "Please provide a valid input!\n") 
-        enter = input( "Press Enter to continue ...") 
+        print( "Пожалуйста, повторите ввод\n") 
+        enter = input("Для продолжения нажмите Enter")
         main_menu() 
  
-# defining search function         
+# метод поиска         
 def searchcontact(): 
-    searchname = input( "Enter First name for Searching contact record: ") 
+    searchname = input( "Введите ИМЯ для поиска контакта: ") 
     remname = searchname[1:] 
     firstchar = searchname[0] 
     searchname = firstchar.upper() + remname 
@@ -57,27 +58,27 @@ def searchcontact():
     if found == False: 
         print( "The Searched Contact is not available in the Phone Book", searchname) 
  
-# first name 
+# имя 
 def input_firstname(): 
-    first = input( "Enter your First Name: ") 
+    first = input( "Введите ваше имя: ") 
     remfname = first[1:] 
     firstchar = first[0] 
     return firstchar.upper() + remfname 
  
-# last name 
+# фамилия 
 def input_lastname(): 
-    last = input( "Enter your Last Name: ") 
+    last = input( "Введите вашу фамилию: ") 
     remlname = last[1:] 
     firstchar = last[0] 
     return firstchar.upper() + remlname 
  
-# storing the new contact details 
+# сохранение новых данных контакта 
 def newcontact(): 
     firstname = input_firstname() 
     lastname = input_lastname() 
-    phoneNum = input( "Enter your Phone number: ") 
-    emailID = input( "Enter your E-mail Address: ") 
-    contactDetails =("[" + firstname + " " + lastname + ", " + phoneNum + ", " + emailID +  "]\n") 
+    phoneNum = input( "Введите ваш номер телефона: ") 
+    emailID = input( "Введите ваш E-mail: ") 
+    contactDetails =("" + firstname + " " + lastname + ";" + phoneNum + ";" + emailID +  "\n") 
     myfile = open(filename, "a") 
     myfile.write(contactDetails) 
     print( "The following Contact Details:\n " + contactDetails + "\nhas been stored successfully!") 
