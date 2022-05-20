@@ -1,9 +1,9 @@
-print("ТЕЛЕФОННЫЙ СПРАВИЧНИК") 
- 
-# создание текстового файла
-filename = "Tel_book.txt"
+print("ТЕЛЕФОННЫЙ СПРАВОЧНИК")
+
+# creating a .txt file to store contact details 
+filename = "Tel_book.txt" 
 myfile = open(filename, "a+") 
-myfile.close 
+myfile.close
  
 # defining main menu 
 def main_menu(): 
