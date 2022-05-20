@@ -1,5 +1,5 @@
 import time
-
+import Książka_telefoniczna.kg as ttt
 print()
 print("ТЕЛЕФОННЫЙ СПРАВОЧНИК_v1")
 
@@ -80,7 +80,7 @@ def newcontact():
     lastname = input_lastname() 
     phoneNum = input("Введите ваш номер телефона: ") 
     emailID = input("Введите ваш E-mail: ") 
-    contactDetails =("" + firstname + " " + lastname + ";" + phoneNum + ";" + emailID +  "\n") 
+    contactDetails =(f"{ttt}" + firstname + " " + lastname + ";" + phoneNum + ";" + emailID +  "\n") 
     myfile = open(filename, "a") 
     myfile.write(contactDetails) 
     print("Новая запись в телефонном справочнике: \n " + contactDetails + " успешно создана!")  
